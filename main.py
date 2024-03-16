@@ -54,7 +54,4 @@ def scan_files_and_create(file_name):
 
 
 check_file_exists(file_name, folder_name)
-
-print("Test")
-
 input("Нажмите enter что бы закрыть...")
