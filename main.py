@@ -7,7 +7,22 @@ file_name = "input.txt"
 folder_name = "output"
 
 
+"""
+    Проверяет, существует ли файл в текущей директории и создает папку вывода, если она не существует.
+
+    Args:
+        file_name (str): Имя входного файла.
+        folder_name (str): Имя папки вывода.
+
+    Returns:
+        None
+
+    Raises:
+        FileNotFoundError: Если файл не существует.
+        NotADirectoryError: Если папка вывода существует, но не является директорией.
+"""
 def check_file_exists(file_name, folder_name):
+
     if os.path.exists(file_name):
         print(f"Файл {file_name} существует в текущей директории.")
         if not os.path.exists(folder_name):
@@ -20,6 +35,21 @@ def check_file_exists(file_name, folder_name):
         print(f"ОШИБКА: Файл {file_name} не существует в текущей директории.")
 
 
+
+
+"""
+    Сканирует входной файл и создает новую папку вывода с количеством токенов и текущей датой в качестве имени папки.
+    Копирует содержимое входного файла в новый файл с именем "tokens.txt" в папке вывода.
+
+    Args:
+        file_name (str): Имя входного файла.
+
+    Returns:
+        None
+
+    Raises:
+        FileNotFoundError: Если файл не существует.
+"""
 def scan_files_and_create(file_name):
     with open(file_name, 'r') as file:
         lines = file.readlines()
@@ -32,7 +62,8 @@ def scan_files_and_create(file_name):
     print(f"Количество токенов: {count}")
 
     # Создаём папку с кол-во токенов и текущей датой
-    new_folder_name = f"{count} TOKENS {datetime.now().strftime('[%d-%m-%Y] [%H-%M-%S]')}"
+    new_folder_name = f"{count} TOKENS {
+        datetime.now().strftime('[%d-%m-%Y] [%H-%M-%S]')}"
     folder_path = os.path.join(folder_name, new_folder_name)
     os.makedirs(folder_path)
 
@@ -49,8 +80,8 @@ def scan_files_and_create(file_name):
     with open('input.txt', 'w') as file:
         file.write('')
     print("Содержимое файла input.txt было успешно удалено.")
-    
-    print(f"Работа успешно выполнена")
+
+    print("Работа успешно выполнена")
 
 
 check_file_exists(file_name, folder_name)
